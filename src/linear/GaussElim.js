@@ -184,7 +184,7 @@ class Gausseelim extends React.Component {
               new_matrix[i][B._size[0]] = (new_matrix[i][B._size[0]] / new_matrix[i][j]);
               new_matrix[i][j] = 0;
               final[j] = new_matrix[i][B._size[0]];
-              Answer[j] = (<h1>{'x' + j + " = " + new_matrix[i][B._size[0]]}</h1>)
+              
               //console.log(new_matrix);
               
           } else if (new_matrix[i][j] !== 0 && typeof final[j] !== 'undefined') {

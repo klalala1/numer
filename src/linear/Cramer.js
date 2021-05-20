@@ -172,6 +172,7 @@ class Cramer extends React.Component {
     let ct = 0;
     while (ct < B._size[0]) {
         let matrix_i = math.subset(A, math.index(N, ct), B);
+        console.log(matrix_i)
         let x_i = this.det(matrix_i) / this.det(A);
         // Answer.push(<h1>{'x' + ct + " = "}{x_i}</h1>);
         //console.log("wilehwlie")
