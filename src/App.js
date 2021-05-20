@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Select from 'react-select';
+import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import Root from './Root';
+import Linear from './linear';
+import Interpolation from './interpolation'
+import LeastSquare from './leastsquare';
+//import Bisection from './root/Bisection'
+ /* const root = ["Bisection","False Postion","One-Point Iteration","Newton Rahpson","Secant"];
+const linear = ["Cramer's Rule", "Gauss' Elimination", "Gause Jordan", "Matrix Inversion"];
+const interpolation = ["Newtion Divide Difference", "Langrange", "Spline"];
+const leastsquare = ["Arrays", "LinkedList", "Stack", "Queue"];*/
+var list =[ 
+    {value:"root",label:"Root of Equation"},{value:"linear",label:"Linear Equation"},
+    {value:"interpolation",label:"Interpolation"},{value:"leastsquare",label:"Least Square"} 
+  ];
+class DropDown extends Component {
+  onChange = (e) => {
+    this.props.history.push(`/${e.value}`);
+  }
+  render() {
+    return (
+      <Select options={list} onChange={this.onChange}>
+         
+     
+      </Select>
+    );
+  }
+}
+
+const Menu = withRouter(DropDown);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+      <Menu />
+        <Route path="/root" render={() => <Root/>} />
+        <Route path="/linear" render={() => <Linear/>} />
+        <Route path="/interpolation" render={() => <Interpolation/>} />
+        <Route path="/leastsquare" render={() => <LeastSquare/>} />
+       
+
+      </div>
+    </BrowserRouter>
   );
 }
-
 export default App;
+ 
